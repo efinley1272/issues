@@ -46,9 +46,11 @@ usage: issues <user> <project> [ count | #{@default_count} ]
     |> convert_to_list_of_hashdicts
     |> sort_into_ascending_order
     |> Enum.take(count)
-    |> TableFormatter.print_table_for_columns([%{column: "number", title: "#"},
-                                               %{column: "created_at", title: "Created At"},
-                                               %{column: "title", title: "Title"}])
+    |> Issues.TableFormatter.print_table_for_columns(
+        [%{column: "number", title: "#"},
+         %{column: "created_at", title: "Created At"},
+         %{column: "title", title: "Title"}]
+      )
   end
 
   def sort_into_ascending_order(list_of_issues) do
